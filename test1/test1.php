@@ -37,9 +37,11 @@ $areas = array (
     14 => 'Центр',
 );
 
-foreach($areas as $key => $value) {
-    echo $key . ':' . $value . "\n";
+foreach($areas as $id => $district) {
+    echo $id . ':' . $district . "\n";
 }
+
+echo "\n";
 
 // Близкие районы, связь осуществляется по индентификатору района из массива $areas
 $nearby = array (
@@ -59,13 +61,15 @@ $nearby = array (
     14 => array(9,10),
 );
 
-foreach ($nearby as $key => $value) {
-    echo "Nearby areas for " . $key . ": ";
-    foreach ($value as $area) {
+foreach ($nearby as $id => $array) {
+    echo "id " . $id . ": ";
+    foreach ($array as $area) {
         echo $area . ", ";
     }
     echo "\n";
 }
+
+echo "\n";
 
 // список сотрудников
 $workers = array (
@@ -91,12 +95,15 @@ $workers = array (
     ),
 );
 
-foreach ($workers as $key => $value) {
-    echo $key . ':' . $value . "\n";
-    foreach ($value as $area) {
+echo "\n";
+
+foreach ($workers as $id => $worker) {
+    echo $id . ':' .  "\n";
+    foreach ($worker as $area) {
         echo $area . ", ";
-        echo "\n";
+
     }
+    echo "\n";
 }
 
 
