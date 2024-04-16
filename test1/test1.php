@@ -107,7 +107,7 @@ $workers = array (
 //}
 
 
-function worker($area_name)
+function worker(string $area_name): ?string
 {
     global $workers;
     foreach ($workers as $worker) {
@@ -119,7 +119,8 @@ function worker($area_name)
     return null;
 }
 
-function findingWorker($area_name) {
+function findingWorker(string $area_name): ?string
+{
     global $areas, $nearby;
 
     $index = null;
