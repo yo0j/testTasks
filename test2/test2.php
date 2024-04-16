@@ -46,3 +46,20 @@ $list = array (
     '20:30-21:30',
     '21:30-22:30',
 );
+
+function checkingTimeInterval(string $time_interval): ?bool
+{
+    if (preg_match("/^\d{2}:\d{2}-\d{2}:\d{2}$/", $time_interval))
+        return true;
+    else
+        return false;
+}
+
+
+//function checkForOverlapOfIntervals(string $overlap_interval): ?bool
+//{
+//
+//}
+
+if (checkingTimeInterval("14:00-17:00")) echo 'true';
+else echo 'false';
