@@ -37,11 +37,11 @@ $areas = array (
     14 => 'Центр',
 );
 
-foreach($areas as $id => $district) {
-    echo $id . ':' . $district . "\n";
-}
+//foreach($areas as $id => $district) {
+//    echo $id . ':' . $district . "\n";
+//}
 
-echo "\n";
+//echo "\n";
 
 // Близкие районы, связь осуществляется по индентификатору района из массива $areas
 $nearby = array (
@@ -61,15 +61,15 @@ $nearby = array (
     14 => array(9,10),
 );
 
-foreach ($nearby as $id => $array) {
-    echo "id " . $id . ": ";
-    foreach ($array as $area) {
-        echo $area . ", ";
-    }
-    echo "\n";
-}
-
-echo "\n";
+//foreach ($nearby as $id => $array) {
+//    echo "id " . $id . ": ";
+//    foreach ($array as $area) {
+//        echo $area . ", ";
+//    }
+//    echo "\n";
+//}
+//
+//echo "\n";
 
 // список сотрудников
 $workers = array (
@@ -95,18 +95,54 @@ $workers = array (
     ),
 );
 
-echo "\n";
+//echo "\n";
+//
+//foreach ($workers as $id => $worker) {
+//    echo $id . ':' .  "\n";
+//    foreach ($worker as $area) {
+//        echo $area . ", ";
+//
+//    }
+//    echo "\n";
+//}
 
-foreach ($workers as $id => $worker) {
-    echo $id . ':' .  "\n";
-    foreach ($worker as $area) {
-        echo $area . ", ";
+
+function worker($area_name)
+{
+    global $workers;
+    foreach ($workers as $worker) {
+        if ($worker['area_name'] == $area_name) {
+
+            return $worker['login'];
+        }
+    }
+    return null;
+}
+
+function findingWorker($area_name) {
+    global $areas, $nearby;
+
+    $index = null;
+    foreach($areas as $id => $district) {
+        if ($district == $area_name) {
+            $index = $id;
+        }
 
     }
-    echo "\n";
+    $login = worker($areas[$index]);
+    if ($login != null) {
+        return $login;
+    }
+
+    foreach ($nearby[$index] as $area) {
+        $login = worker($areas[$area]);
+        if ($login != null) {
+            return $login;
+        }
+    }
+    return null;
 }
 
 
-function closestEmployee($district){
-
-}
+echo findingWorker('Ключевая');
+//echo worker('Центр');
