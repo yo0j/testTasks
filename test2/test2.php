@@ -45,21 +45,103 @@ $list = array (
     '17:00-20:00',
     '20:30-21:30',
     '21:30-22:30',
+    '22:00-23:00'
 );
 
-function checkingTimeInterval(string $time_interval): ?bool
-{
-    if (preg_match("/^\d{2}:\d{2}-\d{2}:\d{2}$/", $time_interval))
-        return true;
-    else
-        return false;
+class Interval {
+    public $start;
+    public $end;
 }
 
 
-//function checkForOverlapOfIntervals(string $overlap_interval): ?bool
-//{
-//
-//}
+function stringToTime(string $l): object
+{
+   $times = explode("-", $l);
+   $start_time = $times[0];
+   $end_time = $times[1];
+   $obj = new Interval();
+   $obj->start = strtotime($start_time);
+   $obj->end = strtotime($end_time);
 
-if (checkingTimeInterval("14:00-17:00")) echo 'true';
-else echo 'false';
+
+   return $obj;
+}
+
+
+function checkingTimeInterval( $timeInterval): string
+{
+
+    if ($timeInterval ->start !== null && $timeInterval ->end !== null) {
+        if ($timeInterval ->start < $timeInterval ->end) {
+
+            return true;
+//            return "Интервал времени валиден";
+
+        } else {
+//            return "Конечное время должно быть больше начального";
+            return false;
+        }
+    } else {
+//        return "Интервал времени невалиден";
+        return false;
+    }
+}
+
+if (checkingTimeInterval(stringToTime('55:90-61:89'))){
+
+    echo 'interval valid';
+} else {
+    echo 'interval not valid';
+}
+
+//function checkInterval ($enterInterval){
+//    $ok = preg_match('/^([01][0-9]|2[0-3])(:)[0-5][0-9](-)([01][0-9]|2[0-3])(:)[0-5][0-9]$/', $enterInterval);
+//    if(!$ok)
+//    {
+//        return false;
+//    }
+//    return true;
+//}
+//function checkAddInterval ($enterInterval){
+//    global $list;
+//    $enterIntervals = explode ("-", $enterInterval);
+//    foreach ($enterIntervals as $j => $enterInt){
+//        if ($j == 0){
+//            $enterIntervalStart = strtotime($enterInt);
+//        }
+//        else {
+//            $enterIntervalEnd = strtotime($enterInt);
+//        }
+//    }
+//    foreach ($list as $timeInt){
+//        $intervals = explode ("-", $timeInt);
+//        foreach ($intervals as $i => $interval){
+//            if ($i == 0){
+//                $intervalStart = strtotime($interval);
+//            }
+//            else {
+//                $intervalEnd = strtotime($interval);
+//            }
+//        }
+//        if($intervalStart < $enterIntervalEnd and $intervalEnd > $enterIntervalStart){
+//            return false;
+//        }
+//        else{
+//            return true;
+//        }
+//    }
+//}
+//
+//if (checkAddInterval('22:00-23:00')) {
+//    echo "ok";
+//
+//} else {
+//    echo "not ok";
+//}
+//
+//if (checkInterval('22:00-23:00')) {
+//    echo "ok";
+//
+//} else {
+//    echo "not ok";
+//}
