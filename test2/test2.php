@@ -112,48 +112,75 @@ if (addTimeInterval($list, $newInterval)){
 } else {
     echo "Новый интервал пересекается с существующим интервалом\n";
 }
+
+
+//class Interval
+//{
 //
-//class Interval {
-//    public $start;
-//    public $end;
+//    private $start;
+//    private $end;
+//
+//    public function setStart($startTime)
+//    {
+//        $this->start = $startTime;
+//    }
+//
+//    public function getStart()
+//    {
+//        return $this->start;
+//    }
+//
+//    public function setEnd($endTime)
+//    {
+//        $this->end = $endTime;
+//    }
+//
+//    public function getEnd()
+//    {
+//        return $this->end;
+//    }
 //}
 //
-//
-//function stringToTime(string $l): object
+//function stringToInterval(string $l): Interval
 //{
 //    $times = explode("-", $l);
 //    $start_time = $times[0];
 //    $end_time = $times[1];
-//    $obj = new Interval();
-//    $obj->start = strtotime($start_time);
-//    $obj->end = strtotime($end_time);
+//    $interval = new Interval();
+//    $interval->setStart(strtotime($start_time));
+//    $interval->setEnd(strtotime($end_time));
 //
 //
-//    return $obj;
+//    return $interval;
 //}
 //
 //
-//function checkingTimeInterval( $timeInterval): string
+//function addTimeInterval(array $list, string $newInterval): bool
 //{
 //
-//    if ($timeInterval ->start !== null && $timeInterval ->end !== null) {
-//        if ($timeInterval ->start < $timeInterval ->end) {
+//    foreach ($list as $interval) {
+//        [$start, $end] = explode('-', $interval);
 //
+//        [$newStart, $newEnd] = explode('-', $newInterval);
+//
+//        if (($newStart >= $start && $newStart < $end) || ($newEnd > $start && $newEnd <= $end)) {
+//            return false;
+//        }
+//    }
+//    return true;
+//}
+//
+//
+//function checkingTimeInterval(Interval $interval): bool
+//{
+//
+//    if ($interval->getStart() !== null && $interval->getEnd() !== null) {
+//        if ($interval->getStart() < $interval->getEnd()) {
 //            return true;
-////            return "Интервал времени валиден";
-//
 //        } else {
-////            return "Конечное время должно быть больше начального";
 //            return false;
 //        }
 //    } else {
-////        return "Интервал времени невалиден";
 //        return false;
 //    }
 //}
-//
-//if (checkingTimeInterval(stringToTime('22:00-23:00'))){
-//
-//    echo 'interval valid';
-//} else {
-//    echo 'interval not valid';
