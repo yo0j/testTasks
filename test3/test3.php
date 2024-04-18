@@ -24,3 +24,24 @@
 
 # Использовать данные:
 # любые
+
+class Calculation
+{
+    public $weight;
+
+    public function dhl(int $weight)
+    {
+    if ($weight > 10) {
+        return $weight * 1000;
+    } else {
+        return $weight * 100;
+    }
+    }
+
+    public function RussianMail(int $weight)
+    {
+    return $weight * 100;
+    }
+}
+
+$mall = 100;

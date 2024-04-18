@@ -37,12 +37,6 @@ $areas = array (
     14 => 'Центр',
 );
 
-//foreach($areas as $id => $district) {
-//    echo $id . ':' . $district . "\n";
-//}
-
-//echo "\n";
-
 // Близкие районы, связь осуществляется по индентификатору района из массива $areas
 $nearby = array (
     1 => array(2,11),
@@ -60,16 +54,6 @@ $nearby = array (
     13 => array(11,1,8),
     14 => array(9,10),
 );
-
-//foreach ($nearby as $id => $array) {
-//    echo "id " . $id . ": ";
-//    foreach ($array as $area) {
-//        echo $area . ", ";
-//    }
-//    echo "\n";
-//}
-//
-//echo "\n";
 
 // список сотрудников
 $workers = array (
@@ -94,18 +78,6 @@ $workers = array (
         'area_name' => 'Центр', //14
     ),
 );
-
-//echo "\n";
-//
-//foreach ($workers as $id => $worker) {
-//    echo $id . ':' .  "\n";
-//    foreach ($worker as $area) {
-//        echo $area . ", ";
-//
-//    }
-//    echo "\n";
-//}
-
 
 function worker(string $area_name): ?string
 {
