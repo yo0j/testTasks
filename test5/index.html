@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адаптивный дизайн</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<h1>Олимпиада</h1>
+<label for="participants">Участники:</label><br>
+<input type="text" id="participants" placeholder="введите имена участников через запятую" pattern="[А-Яа-яЁё,]*" title="Только кириллические буквы и запятая разрешены"><br>
+<button id="addButton">Добавить</button>
+
+<script>
+    document.getElementById('addButton').addEventListener('click', function() {
+        let participants = document.getElementById('participants').value;
+        let participantsArray = participants.split(',');
+        console.log(participantsArray);
+    });
+
+    document.getElementById('participants').addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            document.getElementById('addButton').click();
+        }
+    });
+</script>
+</body>
+</html>
