@@ -27,8 +27,6 @@
 
 class Calculation
 {
-    public $weight;
-
     public function dhl(int $weight)
     {
     if ($weight > 10) {

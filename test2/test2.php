@@ -48,32 +48,66 @@ $list = array (
     '22:00-23:00'
 );
 
-class Interval {
-    public $start;
-    public $end;
+
+class Interval
+{
+
+    private $start;
+    private $end;
+
+    public function setStart($startTime)
+    {
+        $this->start = strtotime($startTime);
+    }
+
+    public function getStart()
+    {
+        return $this->start;
+    }
+
+    public function setEnd($endTime)
+    {
+        $this->end = strtotime($endTime);
+    }
+
+    public function getEnd()
+    {
+        return $this->end;
+    }
 }
 
-function stringToTime(string $l): object
+function stringToInterval(string $l): Interval
 {
     $times = explode("-", $l);
     $start_time = $times[0];
     $end_time = $times[1];
-    $obj = new Interval();
-    $obj->start = strtotime($start_time);
-    $obj->end = strtotime($end_time);
+    $interval = new Interval();
+    $interval->setStart($start_time);
+    $interval->setEnd($end_time);
 
 
-    return $obj;
+    return $interval;
 }
 
 
-function addTimeInterval($list, $newInterval) {
-$isOverlap = false;
+function addTimeInterval(array $list, string $newInterval): bool
+{
 
     foreach ($list as $interval) {
-        list($start, $end) = explode('-', $interval);
 
-        list($newStart, $newEnd) = explode('-', $newInterval);
+        [$start, $end] = explode('-', $interval);
+        $start_time = $start[0];
+        $end_time = $end[1];
+        $interval = new Interval();
+        $interval->setStart($start_time);
+        $interval->setEnd($end_time);
+
+        [$newStart, $newEnd] = explode('-', $newInterval);
+        $start_time = $newStart[0];
+        $end_time = $newEnd[1];
+        $interval = new Interval();
+        $interval->setStart($start_time);
+        $interval->setEnd($end_time);
 
         if (($newStart >= $start && $newStart < $end) || ($newEnd > $start && $newEnd <= $end)) {
             return false;
@@ -83,11 +117,11 @@ $isOverlap = false;
 }
 
 
-function checkingTimeInterval( $timeInterval): string
+function checkingTimeInterval(Interval $interval): bool
 {
 
-    if ($timeInterval ->start !== null && $timeInterval ->end !== null) {
-        if ($timeInterval ->start < $timeInterval ->end) {
+    if ($interval->getStart() !== null && $interval->getEnd() !== null) {
+        if ($interval->getStart() < $interval->getEnd()) {
             return true;
         } else {
             return false;
@@ -97,90 +131,18 @@ function checkingTimeInterval( $timeInterval): string
     }
 }
 
-$newInterval = '07:00-09:00';
+$newInterval = '13:00-15:00';
 
-if (checkingTimeInterval(stringToTime($newInterval))){
+if (checkingTimeInterval(stringToInterval($newInterval))){
 
     echo "Интервал валиден\n";
+    if (addTimeInterval($list, $newInterval)){
+
+        echo "Новый интервал добавлен\n";
+    } else {
+        echo "Новый интервал пересекается с существующим интервалом\n";
+    }
 } else {
     echo "Интервал  не валиден\n";
 }
 
-if (addTimeInterval($list, $newInterval)){
-
-    echo "Новый интервал добавлен\n";
-} else {
-    echo "Новый интервал пересекается с существующим интервалом\n";
-}
-
-
-//class Interval
-//{
-//
-//    private $start;
-//    private $end;
-//
-//    public function setStart($startTime)
-//    {
-//        $this->start = $startTime;
-//    }
-//
-//    public function getStart()
-//    {
-//        return $this->start;
-//    }
-//
-//    public function setEnd($endTime)
-//    {
-//        $this->end = $endTime;
-//    }
-//
-//    public function getEnd()
-//    {
-//        return $this->end;
-//    }
-//}
-//
-//function stringToInterval(string $l): Interval
-//{
-//    $times = explode("-", $l);
-//    $start_time = $times[0];
-//    $end_time = $times[1];
-//    $interval = new Interval();
-//    $interval->setStart(strtotime($start_time));
-//    $interval->setEnd(strtotime($end_time));
-//
-//
-//    return $interval;
-//}
-//
-//
-//function addTimeInterval(array $list, string $newInterval): bool
-//{
-//
-//    foreach ($list as $interval) {
-//        [$start, $end] = explode('-', $interval);
-//
-//        [$newStart, $newEnd] = explode('-', $newInterval);
-//
-//        if (($newStart >= $start && $newStart < $end) || ($newEnd > $start && $newEnd <= $end)) {
-//            return false;
-//        }
-//    }
-//    return true;
-//}
-//
-//
-//function checkingTimeInterval(Interval $interval): bool
-//{
-//
-//    if ($interval->getStart() !== null && $interval->getEnd() !== null) {
-//        if ($interval->getStart() < $interval->getEnd()) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    } else {
-//        return false;
-//    }
-//}

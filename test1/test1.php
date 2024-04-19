@@ -116,6 +116,9 @@ function findingWorker(string $area_name): ?string
     return null;
 }
 
-
-echo findingWorker('Ключевая');
+$district = 'Центр';
+$findLogin = findingWorker($district);
+if ($findLogin != null) {
+    echo "По району $district есть специалист $findLogin";
+}
 //echo worker('Центр');
