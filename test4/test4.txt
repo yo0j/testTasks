@@ -37,6 +37,8 @@ INSERT INTO users VALUES
   (DEFAULT, 'admin', '1990-01-01', NOW(), NOW()),
   (DEFAULT, 'third client', '1990-01-01', NOW(), NOW())
 
+
+
 2) /* Выведите список товаров products и разделов catalogs, который соответствует товару. */
  USE shop;
 DROP TABLE IF EXISTS products;
