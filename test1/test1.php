@@ -80,6 +80,7 @@ $workers = array (
 );
 
 function worker(string $area_name): ?string
+/** Работаем со списком $workers, получаем логин по району */
 {
     global $workers;
     foreach ($workers as $worker) {
@@ -91,7 +92,10 @@ function worker(string $area_name): ?string
     return null;
 }
 
-function findingWorker(string $area_name): ?string
+function searchWorker(string $area_name): ?string
+/** Работаем со списком $areas, $nearby. Получаем искомый район, ищем сотрудника. Если не нашли, смотрим ближайшие
+ * районы
+ */
 {
     global $areas, $nearby;
 
@@ -117,7 +121,7 @@ function findingWorker(string $area_name): ?string
 }
 
 $district = 'Центр';
-$findLogin = findingWorker($district);
+$findLogin = searchWorker($district);
 if ($findLogin != null) {
     echo "По району $district есть специалист $findLogin";
 }

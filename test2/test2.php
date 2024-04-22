@@ -50,6 +50,7 @@ $list = array(
 
 
 class Interval
+/** Принимаем строку интервала времени, переводим в Unix и отдаем на сравнение */
 {
 
     private $start;
@@ -77,6 +78,8 @@ class Interval
 }
 
 function stringToInterval(string $l): Interval
+/** Разбиваем временной интервал и отправляем на перевод */
+
 {
     $times = explode("-", $l);
     $start_time = $times[0];
@@ -91,6 +94,7 @@ function stringToInterval(string $l): Interval
 
 
 function addTimeInterval(array $list, string $newInterval): bool
+/** Проверка на наложение временного интервала */
 {
     [$newStart, $newEnd] = explode('-', $newInterval);
     $start_time = $newStart;
@@ -122,6 +126,7 @@ function addTimeInterval(array $list, string $newInterval): bool
 
 
 function checkingTimeInterval(Interval $interval): bool
+/** Проверка на валидность временного интервала */
 {
 
     if ($interval->getStart() !== null && $interval->getEnd() !== null) {
