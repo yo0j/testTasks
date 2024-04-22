@@ -1,19 +1,9 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
+    background-color: #f8f9fa;
 }
-input[type="text"] {
-    padding: 5px;
-    margin-top: 10px;
-}
-button {
-    padding: 8px 20px;
-    margin-top: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-button:hover {
-    background-color: #0056b3;
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
