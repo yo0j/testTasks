@@ -1,7 +1,10 @@
 $(document).ready(function () {
     sessionStorage.removeItem('participantsData'); // Очищаем данные при загрузке страницы
 
-    let savedParticipantsData = []
+    let savedParticipantsData = [];
+    let sortByNameAsc = true;
+    let sortByPointsAsc = true;
+
     $('#addButton').click(function () {
         addParticipants();
     });
@@ -10,6 +13,18 @@ $(document).ready(function () {
         if (event.which === 13) {
             addParticipants();
         }
+    });
+
+    $('#participantsTable').on('click', 'th', function() {
+        const index = $(this).index();
+        if (index === 1) {
+            savedParticipantsData.sort((a, b) => sortByNameAsc ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name));
+            sortByNameAsc = !sortByNameAsc;
+        } else if (index === 2) {
+            savedParticipantsData.sort((a, b) => sortByNameAsc ? a.points - b.points : b.points - a.points);
+            sortByPointsAsc = !sortByPointsAsc;
+        }
+        displayParticipants(savedParticipantsData);
     });
 
     function addParticipants() {
@@ -25,7 +40,8 @@ $(document).ready(function () {
             data: {participants: participants},
             success: function (data) {
                 const participantsData = JSON.parse(data);
-                displayParticipants(participantsData); // Отображаем участников на странице
+                participantsData.forEach((participant) => savedParticipantsData.push(participant));
+                displayParticipants(savedParticipantsData);
                 $('#participants').val('');
             },
             error: function () {
@@ -34,12 +50,10 @@ $(document).ready(function () {
         });
     }
 
-
     function displayParticipants(participantsData) {
-        participantsData.map((participant)=>{ savedParticipantsData.push(participant)})
         const tableBody = $('#participantsTable tbody');
         tableBody.empty();
-        savedParticipantsData.forEach(function (participant, index) {
+        participantsData.forEach(function (participant, index) {
             const row = `<tr>
                             <td>${index + 1}</td>
                             <td>${participant.name}</td>

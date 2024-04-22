@@ -77,42 +77,41 @@ class Interval
     }
 }
 
-function stringToInterval(string $l): Interval
+function stringToInterval(string $intervalStr): Interval
 /** Разбиваем временной интервал и отправляем на перевод */
 
 {
-    $times = explode("-", $l);
-    $start_time = $times[0];
-    $end_time = $times[1];
+    $times = explode("-", $intervalStr);
+    $startTime = $times[0];
+    $endTime = $times[1];
 
     $interval = new Interval();
-    $interval->setStart($start_time);
-    $interval->setEnd($end_time);
+    $interval->setStart($startTime);
+    $interval->setEnd($endTime);
 
     return $interval;
 }
 
-
-function addTimeInterval(array $list, string $newInterval): bool
 /** Проверка на наложение временного интервала */
+function addTimeInterval(array $list, string $newInterval): bool
 {
     [$newStart, $newEnd] = explode('-', $newInterval);
-    $start_time = $newStart;
-    $end_time = $newEnd;
+    $startTime = $newStart;
+    $endTime = $newEnd;
 
     $newIntervalObj = new Interval();
-    $newIntervalObj->setStart($start_time);
-    $newIntervalObj->setEnd($end_time);
+    $newIntervalObj->setStart($startTime);
+    $newIntervalObj->setEnd($endTime);
 
     foreach ($list as $interval) {
 
         [$start, $end] = explode('-', $interval);
-        $start_time = $start;
-        $end_time = $end;
+        $startTime = $start;
+        $endTime = $end;
 
         $oldInterval = new Interval();
-        $oldInterval->setStart($start_time);
-        $oldInterval->setEnd($end_time);
+        $oldInterval->setStart($startTime);
+        $oldInterval->setEnd($endTime);
 
         if (($newIntervalObj->getStart() >= $oldInterval->getStart() &&
                 $newIntervalObj->getStart() < $oldInterval->getEnd()) ||
