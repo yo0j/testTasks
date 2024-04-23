@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+
+}
+
+body {
+    background-image:    url(./img/svg/Rectangle3.svg), url(./img/svg/image2.svg);
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    /*background-position: center center;              !* optional, center the image *!*/
+
+}
+
+.header__inner {
+    margin-left: 19.5%;
+    margin-top:50px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+button {
+    outline: none;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 100px;
+
+}
+
+nav a {
+    margin-right: 50px;
+}
+
+nav a:last-child {
+    margin-right: 90px;
+}
+
+/*.header__info {*/
+
+/*}*/

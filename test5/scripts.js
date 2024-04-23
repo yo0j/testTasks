@@ -18,7 +18,8 @@ $(document).ready(function () {
     $('#participantsTable').on('click', 'th', function() {
         const index = $(this).index();
         if (index === 1) {
-            savedParticipantsData.sort((a, b) => sortByNameAsc ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name));
+            savedParticipantsData.sort((a, b) => sortByNameAsc ? a.name.localeCompare(b.name) :
+                b.name.localeCompare(a.name));
             sortByNameAsc = !sortByNameAsc;
         } else if (index === 2) {
             savedParticipantsData.sort((a, b) => sortByNameAsc ? a.points - b.points : b.points - a.points);
