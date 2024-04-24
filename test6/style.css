@@ -1,55 +1,88 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');*/
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.container {
-    max-width: 100%;
-    width: 100%;
-    margin: 0 auto;
-
-}
 
 body {
+    /*background-image:    url(./img/svg/Rectangle3.svg), url(./img/svg/image2.svg);*/
+    /*background-size:     cover;                      !* <------ *!*/
+    /*background-repeat:   no-repeat;*/
+    /*background-position: center center;              !* optional, center the image *!*/
+    font-family: Montserrat, Serif;
+    background-color: white;
+}
+
+.header {
+    margin: auto;
     background-image:    url(./img/svg/Rectangle3.svg), url(./img/svg/image2.svg);
     background-size:     cover;                      /* <------ */
     background-repeat:   no-repeat;
-    /*background-position: center center;              !* optional, center the image *!*/
-
-}
-
-.header__inner {
-    margin-left: 19.5%;
-    margin-top:50px;
     display: flex;
     justify-content: space-between;
+    width: 1920px;
+    height: 900px;
+    background-color: black;
+    padding-top: 50px;
+
+    .header_col {
+        display: inline-flex;
+
+        .logo {
+            width: 61px;
+            height: 67px;
+            margin-left: 380px;
+        }
+
+        nav {
+            margin-top: 13px;
+            margin-left:100px;
+
+            a {
+                color: white;
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 20px;
+                margin: 30px;
+            }
+
+            a:hover{
+                border-bottom: solid 4px #ECBA46 ;
+            }
+        }
+
+        .button_request {
+            color: white;
+            border: solid 1px white;
+            width: 240px;
+            height: 50px;
+            border-radius: 130px;
+            text-align: center;
+            vertical-align: center;
+            cursor: pointer;
+
+            .button_request_text {
+                margin-top: 5%;
+                font-weight: 500;
+                font-size: 20px;
+            }
+        }
+    .header_text h1{
+        text-align: center;
+    }
+
+    }
+
+
 
 }
 
-button {
-    outline: none;
-    border: none;
-}
 
-a {
-    text-decoration: none;
-    color: white;
-    font-size: 20px;
-    font-weight: 500;
-    margin-top: 100px;
 
-}
 
-nav a {
-    margin-right: 50px;
-}
 
-nav a:last-child {
-    margin-right: 90px;
-}
 
-/*.header__info {*/
-
-/*}*/
