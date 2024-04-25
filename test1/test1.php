@@ -79,8 +79,8 @@ $workers = array (
     ),
 );
 
-function worker(string $area_name): ?string
 /** Работаем со списком $workers, получаем логин по району */
+function worker(string $area_name): ?string
 {
     global $workers;
     foreach ($workers as $worker) {
@@ -92,10 +92,10 @@ function worker(string $area_name): ?string
     return null;
 }
 
-function searchWorker(string $area_name): ?string
 /** Работаем со списком $areas, $nearby. Получаем искомый район, ищем сотрудника. Если не нашли, смотрим ближайшие
  * районы
  */
+function searchWorker(string $area_name): ?string
 {
     global $areas, $nearby;
 

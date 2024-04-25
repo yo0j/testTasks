@@ -48,9 +48,8 @@ $list = array(
     '22:00-23:00'
 );
 
-
-class Interval
 /** Принимаем строку интервала времени, переводим в Unix и отдаем на сравнение */
+class Interval
 {
 
     private $start;
@@ -124,8 +123,8 @@ function addTimeInterval(array $list, string $newInterval): bool
 }
 
 
-function checkingTimeInterval(Interval $interval): bool
 /** Проверка на валидность временного интервала */
+function checkingTimeInterval(Interval $interval): bool
 {
 
     if ($interval->getStart() !== null && $interval->getEnd() !== null) {

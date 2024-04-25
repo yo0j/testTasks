@@ -58,28 +58,12 @@ class DHLCarrier implements CarrierInterface
 }
 
 // Добавление новой компании
-//class KomlevIncCarrier implements CarrierInterface
+//class otherCarrier implements CarrierInterface
 //{
 //    const COST_10000 = 10000;
 //
 //    public function getCost(int $weight): int
 //    {
 //        return $weight * self::COST_10000;
-//    }
-//}
-
-//class IPBasarevskiyCarrier implements CarrierInterface
-//{
-//    const COST_500 = 500;
-//    const COST_3000 = 3000;
-//
-//    const WEIGHT_5 = 5;
-//    public function getCost(int $weight): int
-//    {
-//        if($weight <= self::WEIGHT_10){
-//            return self::COST_100;
-//        } else {
-//            return self::COST_1000;
-//        }
 //    }
 //}
