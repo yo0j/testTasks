@@ -80,11 +80,11 @@ $workers = array (
 );
 
 /** Работаем со списком $workers, получаем логин по району */
-function worker(string $area_name): ?string
+function worker(string $areaName): ?string
 {
     global $workers;
     foreach ($workers as $worker) {
-        if ($worker['area_name'] == $area_name) {
+        if ($worker['area_name'] == $areaName) {
 
             return $worker['login'];
         }
@@ -95,13 +95,13 @@ function worker(string $area_name): ?string
 /** Работаем со списком $areas, $nearby. Получаем искомый район, ищем сотрудника. Если не нашли, смотрим ближайшие
  * районы
  */
-function searchWorker(string $area_name): ?string
+function searchWorker(string $areaName): ?string
 {
     global $areas, $nearby;
 
     $index = null;
     foreach($areas as $id => $district) {
-        if ($district == $area_name) {
+        if ($district == $areaName) {
             $index = $id;
         }
 
