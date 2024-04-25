@@ -39,7 +39,8 @@
 //  (DEFAULT, 'admin', '1990-01-01', NOW(), NOW()),
 //  (DEFAULT, 'third client', '1990-01-01', NOW(), NOW())
 
-$getUsersList = "SELECT name FROM users WHERE id IN (SELECT user_id FROM orders)";
+//Запрос:
+//SELECT name FROM users WHERE id IN (SELECT user_id FROM orders)
 
 /** 2)Выведите список товаров products и разделов catalogs, который соответствует товару. */
 // USE shop;
@@ -73,7 +74,8 @@ $getUsersList = "SELECT name FROM users WHERE id IN (SELECT user_id FROM orders)
 //  (DEFAULT, 'Mother boards'),
 //  (DEFAULT, 'Video cards');
 
-$getProductList = "SELECT DISTINCT p.name, c.name FROM products AS p INNER JOIN catalogs AS c ON p.catalog_id = c.id";
+//Запрос:
+//SELECT DISTINCT p.name, c.name FROM products AS p INNER JOIN catalogs AS c ON p.catalog_id = c.id
 
 /** 3)В базе данных shop и sample присутствуют одни и те же таблицы.
   * Переместите запись id = 1 из таблицы shop.users в таблицу sample.users. Используйте транзакции. */
@@ -93,22 +95,25 @@ $getProductList = "SELECT DISTINCT p.name, c.name FROM products AS p INNER JOIN 
 //INSERT INTO users VALUES
 //(DEFAULT, 'sample user', '1990-01-01', DEFAULT, DEFAULT);
 
-$tableTransfer = "SET AUTOCOMMIT=0 
-BEGIN INSERT INTO sample.users (name, birthday_at) 
-SELECT shop.users.name, shop.users.birthday_at FROM shop.users WHERE (id = 1)
-COMMIT";
+
+//Запрос:
+//SET AUTOCOMMIT=0
+//BEGIN INSERT INTO sample.users (name, birthday_at)
+//SELECT shop.users.name, shop.users.birthday_at FROM shop.users WHERE (id = 1)
+//COMMIT
 
 /** 4)Выведите одного случайного пользователя из таблицы shop.users, старше 30 лет, сделавшего минимум 3 заказа за последние полгода */
 
 use shop;
 
-$selectUser = "SELECT u.name FROM shop.users AS u JOIN (
-    SELECT user_id
-    FROM shop.orders
-    WHERE created_at >= DATE_SUB(NOW(), INTERVAL 6 MONTH)
-    GROUP BY user_id
-    HAVING COUNT(*) >= 3
-) AS o ON u.id = o.user_id
-WHERE TIMESTAMPDIFF(YEAR, u.birthday_at, CURDATE()) > 30
-ORDER BY RAND()
-LIMIT 1";
+//Запрос:
+//SELECT u.name FROM shop.users AS u JOIN (
+//    SELECT user_id
+//    FROM shop.orders
+//    WHERE created_at >= DATE_SUB(NOW(), INTERVAL 6 MONTH)
+//    GROUP BY user_id
+//    HAVING COUNT(*) >= 3
+//) AS o ON u.id = o.user_id
+//WHERE TIMESTAMPDIFF(YEAR, u.birthday_at, CURDATE()) > 30
+//ORDER BY RAND()
+//LIMIT 1
